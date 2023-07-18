@@ -4,8 +4,7 @@
 <br>
 [![Python Version](https://img.shields.io/badge/Python-3.10-blue.svg)](https://www.python.org/downloads/release/python-310/)
 [![Licence MIT](https://img.shields.io/badge/License-MIT-purple.svg)](/LICENCE)
-![Test Status](https://github.com/ZyMa-1/BeatmapBannerMakerCLI
-/actions/workflows/tests.yml/badge.svg?branch=master)
+![Test Status](https://github.com/ZyMa-1/BeatmapBannerMakerCLI/actions/workflows/tests.yml/badge.svg?branch=master)
 
 
 CLI script dedicated to manipulating image using `Pillow` library.
