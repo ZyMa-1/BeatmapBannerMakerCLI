@@ -1,5 +1,5 @@
 # BeatmapBannerMakerCLI
-[![GitHub release](https://img.shields.io/github/release/ZyMa-1/BeatmapBannerMakerCLI.svg?style=for-the-badge&logo=github)](https://github.com/ZyMa-1/BeatmapBannerMakerCLI/releases/latest)
+[![GitHub release](https://img.shields.io/github/release/ZyMa-1/BeatmapBannerMakerCLI.svg?style=for-the-badge&logo=github)](https://github.com/ZyMa-1/BeatmapBannerMakerCLI/releases/latest) 
 <br>
 <br>
 [![Python Version](https://img.shields.io/badge/Python-3.10-blue.svg)](https://www.python.org/downloads/release/python-310/)
