@@ -16,11 +16,11 @@ Generate beatmap banner by enhancing background file with a border and a text.
 python main.py "path_to_your_osu!_folder\Songs\1965625 Azari - Black Out\Azari - Black Out (Ryuusei Aika) [----].osu" --output res/result2.png
 ```
 
-Resulted image would like that:
+Resulted image would look like that:
 
 ![Result](readme_images/result2.png)
 
-It is not the best quality cause I'm not a designer o any sort.
+It is not the best quality cause I'm not a designer of any sort.
 
 Under curtains, my script loads `default-style.yaml` file which looks like that:
 
