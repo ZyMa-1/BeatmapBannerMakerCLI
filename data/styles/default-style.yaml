@@ -1,0 +1,34 @@
+####################
+#
+# border-thickness: {number}%           |  Border thickness in pixels relative to min(width, height)
+# border-thickness: {number}px          |  Thickness in pixels
+#
+# border-color: {string}                |  Name of the color: "black", "white", etc.
+# border-color: {0-255},{0-255},{0-255} |  RGB color
+#
+# font-size: {number}px                 |  Font size in pixels
+# font-size: {number}%                  |  Font size in pixels relative to min(width, height)
+#
+# font-color: {string}                  |  Name of the color: "black", "white", etc.
+# font-color: {0-255},{0-255},{0-255}   |  RGB color
+#
+# font-family: {string}                 |  Path to the 'ttf' font file
+# font-family: default                  |  Converts to data/fonts/SourceCodePro-Regular.ttf
+#
+# text: YAML list of python f-strings   |  Name of the color: "black", "white", etc.
+# text: default                         |  Name of the color: "black", "white", etc.
+#
+# Available f-strings: ('title', 'title_unicode', 'artist', 'artist_unicode',
+#                       'creator', 'source', 'beatmap_id', 'beatmap_set_id')
+#
+#                       I.e.  Some metadata
+#
+###################
+$schema: ../yaml_schemas/yaml_schema.json # Just specifying a schema, not necessary
+parameters:
+  border-thickness: 5%
+  border-color: white
+  font-size: 60px
+  font-color: white
+  font-family: default
+  text: default
