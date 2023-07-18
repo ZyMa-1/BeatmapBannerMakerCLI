@@ -15,8 +15,8 @@
 # font-family: {string}                 |  Path to the 'ttf' font file
 # font-family: default                  |  Converts to data/fonts/SourceCodePro-Regular.ttf
 #
-# text: YAML list of python f-strings   |  Name of the color: "black", "white", etc.
-# text: default                         |  Name of the color: "black", "white", etc.
+# text: YAML list of python f-strings   |
+# text: default                         |  ["{artist} - {title}", "Beatmap by {creator}"]
 #
 # Available f-strings: ('title', 'title_unicode', 'artist', 'artist_unicode',
 #                       'creator', 'source', 'beatmap_id', 'beatmap_set_id')
