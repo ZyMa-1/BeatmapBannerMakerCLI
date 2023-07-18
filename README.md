@@ -61,5 +61,6 @@ parameters:
   text: default
 ```
 
-You can specify some parameters there and further pass `your_style.yaml` path to the script using `--style` or `-s` parameter.
+You can specify some parameters there and further pass `your_style.yaml` path to the script using `--style` or `-s` parameter.  
+  
 Also as you may notice in the default `yaml` file is some sort of documentation, you can refer to it when changing parameters.
