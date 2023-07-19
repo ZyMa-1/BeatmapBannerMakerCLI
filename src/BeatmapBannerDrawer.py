@@ -84,3 +84,7 @@ class BeatmapBannerDrawer:
 
     def save_image(self, output_path):
         self.image.save(output_path)
+
+    def __del__(self):
+        # Close the image file
+        self.image.close()

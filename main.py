@@ -6,17 +6,14 @@ from src.ArgumentParser import ArgumentParser
 from src.BeatmapBannerDrawer import BeatmapBannerDrawer
 
 
-def exec_main(args):
+def exec_main_parameters(*, args, parameters, save_image=True):
     # Pre-parsing arguments for BeatmapBannerDrawer class to accept them
-    with open(args.style, 'r') as file:
-        data = yaml.safe_load(file)
-        parameters = data['parameters']
-        border_thickness = ArgumentParser.parse_size_value(parameters['border-thickness'])
-        border_color = ArgumentParser.parse_color_value(parameters['border-color'])
-        font_size = ArgumentParser.parse_size_value(parameters['font-size'])
-        font_color = ArgumentParser.parse_color_value(parameters['font-color'])
-        font_family = ArgumentParser.parse_font_family_value(parameters['font-family'])
-        text = ArgumentParser.parse_text_value(parameters['text'])
+    border_thickness = ArgumentParser.parse_size_value(parameters['border-thickness'])
+    border_color = ArgumentParser.parse_color_value(parameters['border-color'])
+    font_size = ArgumentParser.parse_size_value(parameters['font-size'])
+    font_color = ArgumentParser.parse_color_value(parameters['font-color'])
+    font_family = ArgumentParser.parse_font_family_value(parameters['font-family'])
+    text = ArgumentParser.parse_text_value(parameters['text'])
 
     input_file = args.input_file
     output_file_path = args.output
@@ -27,8 +24,11 @@ def exec_main(args):
                                              font_color=font_color,
                                              font_family=font_family)
 
-    beatmap_banner_drawer.save_image(output_file_path)
-    print(f"Saved file to: {output_file_path}")
+    if save_image:
+        beatmap_banner_drawer.save_image(output_file_path)
+        print(f"Saved file to: {output_file_path}")
+
+    del beatmap_banner_drawer
 
 
 if __name__ == "__main__":
@@ -43,4 +43,9 @@ if __name__ == "__main__":
     parser.add_argument("-s", "--style", default="data/styles/default-style.yaml", help="Style '.yaml' file path.")
 
     args = parser.parse_args()
-    exec_main(args)
+
+    with open(args.style, 'r') as file:
+        data = yaml.safe_load(file)
+        parameters = data['parameters']
+
+    exec_main_parameters(args=args, parameters=parameters)

@@ -1,6 +1,6 @@
 parameters:
   border-color: white
-  border-thickness: 99%
+  border-thickness: 0%
   font-color: white
   font-family: default
   font-size: 0%
@@ -8,3 +8,6 @@ parameters:
   - Amogus123
   - Python nerd
   - Osu virgin
+  - '{artist}{title}{title_unicode}{artist_unicode}'
+  - '{creator}{source}{beatmap_id}'
+  - '{beatmap_set_id}'

@@ -1,15 +1,13 @@
 import argparse
 import unittest
 
-import yaml
-
-from main import exec_main
+from main import exec_main_parameters
 from src.PathManager import PathManager
 from tests.StyleValuesGenerator import StyleValuesGenerator as SVGen
 from tests.TestDataGenerator import TestDataGenerator as TDGen
 
 
-def generate_args(pre_data):
+def generate_args_and_parameters(pre_data):
     for current_test_data in TDGen.generate_test_data(pre_data):
         data = {
             'parameters': {
@@ -22,17 +20,15 @@ def generate_args(pre_data):
             }
         }
 
-        with open('temp-style.yaml', 'w') as file:
-            yaml.dump(data, file)
-
         # Create the arguments object with the test case values
         args = argparse.Namespace(
             input_file=str(PathManager.PROJECT_ROOT / "tests" / "input" / "Hensonn - Sahara (SMOKELIND) [X].osu"),
             output=str(PathManager.PROJECT_ROOT / "tests" / "res" / "temp-res.png"),
             style=str(PathManager.PROJECT_ROOT / "tests" / "temp-style.yaml"),
         )
+        parameters = data['parameters']
 
-        yield args
+        yield args, parameters
 
 
 class TestApp(unittest.TestCase):
@@ -44,8 +40,8 @@ class TestApp(unittest.TestCase):
                     SVGen.generate_font_family_valid_values(),
                     SVGen.generate_text_valid_values()]
 
-        for args in generate_args(pre_data):
-            exec_main(args)
+        for args, parameters in generate_args_and_parameters(pre_data):
+            exec_main_parameters(args=args, parameters=parameters, save_image=False)
 
     def test_main_bad(self):
         pre_data = [SVGen.generate_size_bad_values(),
@@ -55,8 +51,9 @@ class TestApp(unittest.TestCase):
                     SVGen.generate_font_family_bad_values(),
                     SVGen.generate_text_bad_values()]
 
-        for args in generate_args(pre_data):
-            self.assertRaises((OSError, ValueError), lambda: exec_main(args))
+        for args, parameters in generate_args_and_parameters(pre_data):
+            self.assertRaises((OSError, ValueError),
+                              lambda: exec_main_parameters(args=args, parameters=parameters, save_image=False))
 
 
 if __name__ == "__main__":
