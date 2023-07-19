@@ -11,6 +11,7 @@ def exec_main_parameters(*, args, parameters, save_image=True):
     border_thickness = ArgumentParser.parse_size_value(parameters['border-thickness'])
     border_color = ArgumentParser.parse_color_value(parameters['border-color'])
     font_size = ArgumentParser.parse_size_value(parameters['font-size'])
+    crop_vertical_size = ArgumentParser.parse_size_value(parameters['crop-vertical-size'])
     font_color = ArgumentParser.parse_color_value(parameters['font-color'])
     font_family = ArgumentParser.parse_font_family_value(parameters['font-family'])
     text = ArgumentParser.parse_text_value(parameters['text'])
@@ -19,6 +20,7 @@ def exec_main_parameters(*, args, parameters, save_image=True):
     output_file_path = args.output
 
     beatmap_banner_drawer = BeatmapBannerDrawer(input_file)
+    beatmap_banner_drawer.crop_image(crop_vertical_size=crop_vertical_size)
     beatmap_banner_drawer.draw_border(thickness=border_thickness, color=border_color)
     beatmap_banner_drawer.draw_text_centered(text, font_size=font_size,
                                              font_color=font_color,

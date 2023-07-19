@@ -82,6 +82,27 @@ class BeatmapBannerDrawer:
         except ValueError:  # Check for bad coordinates
             pass
 
+    def crop_image(self, *, crop_vertical_size):
+        if crop_vertical_size == 0:
+            return
+
+        image_width, image_height = self.image.size
+
+        # Further parsing arguments
+        if isinstance(crop_vertical_size, float):
+            crop_vertical_size = int(min(image_width, image_height) * crop_vertical_size)
+
+        ###########################
+
+        left = 0
+        top = crop_vertical_size
+        right = image_width
+        bottom = image_height - crop_vertical_size
+        try:
+            self.image = self.image.crop((left, top, right, bottom))
+        except ValueError:  # Check for bad coordinates
+            pass
+
     def save_image(self, output_path):
         self.image.save(output_path)
 

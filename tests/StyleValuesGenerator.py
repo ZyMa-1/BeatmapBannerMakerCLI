@@ -1,7 +1,7 @@
 class StyleValuesGenerator:
     @staticmethod
     def generate_size_valid_values():
-        return ["0%", "10%", "99%", "100%", "0px", "10px", "50px", "1000px"]
+        return ["0%", "10%", "50.5%", "99%", "100%", "0px", "10px", "50px", "1000px"]
 
     @staticmethod
     def generate_size_bad_values():

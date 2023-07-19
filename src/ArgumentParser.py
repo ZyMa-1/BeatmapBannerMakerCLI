@@ -7,7 +7,7 @@ class ArgumentParser:
     @staticmethod
     def parse_size_value(arg: str) -> int | float:
         if arg[-1] == '%':
-            val = int(arg[:-1]) / 100
+            val = float(arg[:-1]) / 100
             if 0 <= val <= 1:
                 return val
             else:

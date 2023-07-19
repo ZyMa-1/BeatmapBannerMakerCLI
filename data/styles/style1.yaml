@@ -1,0 +1,8 @@
+parameters:
+  border-thickness: 5%
+  border-color: black
+  font-size: 60px
+  crop-vertical-size: 20%
+  font-color: white
+  font-family: default
+  text: default
