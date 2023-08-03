@@ -10,6 +10,25 @@
 CLI script dedicated to manipulating image using `Pillow` library.
 Generate beatmap banner by enhancing background file with a border and a text.
 
+## CLI '--help' thingy
+ 
+```
+usage: main.py [-h] -o OUTPUT [-s STYLE] input_file 
+
+CLI application for generating beatmap banner from the given parameters. Just a mini pillow script.
+
+positional arguments:
+  input_file            Path to the '.osu' map file (only for standard mode). Or path to the Image file.
+
+options:
+  -h, --help            show this help message and exit
+  -o OUTPUT, --output OUTPUT
+                        Specify the output file path.
+  -s STYLE, --style STYLE
+                        Style '.yaml' file path.
+```
+
+
 ## Simple Usage
 
 ```bash
