@@ -27,23 +27,27 @@ Under curtains, my script loads `default-style.yaml` file which looks like that:
 ```yaml
 ####################
 #
-# border-thickness: {number}%           |  Border thickness in pixels relative to min(width, height)
-# border-thickness: {number}px          |  Thickness in pixels
+# border-thickness: {int number}px        |  Thickness in pixels
+# border-thickness: {float number}%       |  Border thickness in pixels relative to min(width, height)
 #
-# border-color: {string}                |  Name of the color: "black", "white", etc.
-# border-color: {0-255},{0-255},{0-255} |  RGB color
+# border-color: {string}                  |  Name of the color: "black", "white", etc.
+# border-color: {0-255},{0-255},{0-255}   |  RGB color
 #
-# font-size: {number}px                 |  Font size in pixels
-# font-size: {number}%                  |  Font size in pixels relative to min(width, height)
+# font-size: {int number}px               |  Font size in pixels
+# font-size: {float number}%              |  Font size in pixels relative to min(width, height)
 #
-# font-color: {string}                  |  Name of the color: "black", "white", etc.
-# font-color: {0-255},{0-255},{0-255}   |  RGB color
+# crop-vertical-size: {int number}px      |  Crop image from the top and the bottom by a given amount of pixels
+# crop-vertical-size: {float number}%     |  Crop image from the top and the bottom by a given amount of pixels
+#                                         |                                       relative to min(width, height)
 #
-# font-family: {string}                 |  Path to the 'ttf' font file
-# font-family: default                  |  Converts to data/fonts/SourceCodePro-Regular.ttf
+# font-color: {string}                    |  Name of the color: "black", "white", etc.
+# font-color: {0-255},{0-255},{0-255}     |  RGB color
 #
-# text: YAML list of python f-strings   |  
-# text: default                         |  ["{artist} - {title}", "Beatmap by {creator}"]
+# font-family: {string}                   |  Path to the 'ttf' font file
+# font-family: default                    |  'data/fonts/SourceCodePro-Regular.ttf'
+#
+# text: YAML list of python f-strings     |
+# text: default                           |  ["{artist} - {title}", "Beatmap by {creator}"]
 #
 # Available f-strings: ('title', 'title_unicode', 'artist', 'artist_unicode',
 #                       'creator', 'source', 'beatmap_id', 'beatmap_set_id')
@@ -56,6 +60,7 @@ parameters:
   border-thickness: 5%
   border-color: white
   font-size: 60px
+  crop-vertical-size: 15%
   font-color: white
   font-family: default
   text: default
