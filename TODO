@@ -1,3 +1,2 @@
-Amogus
-
-Write tests. (Done)
+Add possibility of inputting HEX in color parameters
+Add text-outline-font-family, text-outline-font-color, bg-blur variables

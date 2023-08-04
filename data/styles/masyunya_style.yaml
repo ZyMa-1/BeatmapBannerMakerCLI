@@ -1,0 +1,8 @@
+parameters:
+  border-thickness: 5%
+  border-color: 255,10,210
+  font-size: 60px
+  crop-vertical-size: 20%
+  font-color: black
+  font-family: data/fonts/ofont.ru_Oldtimer.ttf
+  text: default
