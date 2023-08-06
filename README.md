@@ -29,11 +29,19 @@ options:
 ```
 
 
-## Simple Usage
+## Simple Usage of the '.py' file
 
 ```bash
 python main.py "path_to_your_osu!_folder\Songs\1965625 Azari - Black Out\Azari - Black Out (Ryuusei Aika) [----].osu" --output res/result2.png
 ```
+
+## Simple Usage of the '.exe' file
+
+```bash
+ .\beatmap_banner_maker_v1.2.exe "path_to_your_osu!_folder\Songs\Hensonn - Sahara (SMOKELIND) [X].osu" -o res/test.png
+```
+
+## Further explanation
 
 Resulted image would look like that:
 
@@ -46,43 +54,55 @@ Under curtains, my script loads `default-style.yaml` file which looks like that:
 ```yaml
 ####################
 #
-# border-thickness: {int number}px        |  Thickness in pixels
-# border-thickness: {float number}%       |  Border thickness in pixels relative to min(width, height)
+# border-thickness: {int number}px              |  Thickness in pixels
+# border-thickness: {float number}%             |  Border thickness in pixels relative to min(width, height)
 #
-# border-color: {string}                  |  Name of the color: "black", "white", etc.
-# border-color: {0-255},{0-255},{0-255}   |  RGB color
+# border-color: {string}                        |  Name of the color: "black", "white", etc.
+# border-color: {HEX string}                    |  Hex string of the color. For example #4287f5, #ffffff, etc.
+# border-color: {0-255},{0-255},{0-255}         |  RGB color
 #
-# font-size: {int number}px               |  Font size in pixels
-# font-size: {float number}%              |  Font size in pixels relative to min(width, height)
+# font-size: {int number}px                     |  Font size in pixels
+# font-size: {float number}%                    |  Font size in pixels relative to min(width, height)
 #
-# crop-vertical-size: {int number}px      |  Crop image from the top and the bottom by a given amount of pixels
-# crop-vertical-size: {float number}%     |  Crop image from the top and the bottom by a given amount of pixels
-#                                         |                                       relative to min(width, height)
+# bg-crop-vertical-size: {int number}px         |  Crop image from the top and the bottom by a given amount of pixels
+# bg-crop-vertical-size: {float number}%        |  Crop image from the top and the bottom by a given amount of pixels
+#                                               |                                       relative to min(width, height)
 #
-# font-color: {string}                    |  Name of the color: "black", "white", etc.
-# font-color: {0-255},{0-255},{0-255}     |  RGB color
+# font-color: {string}                          |  Name of the color: "black", "white", etc.
+# font-color: {HEX string}                      |  Hex string of the color. For example #4287f5, #ffffff, etc.
+# font-color: {0-255},{0-255},{0-255}           |  RGB color
 #
-# font-family: {string}                   |  Path to the 'ttf' font file
-# font-family: default                    |  'data/fonts/SourceCodePro-Regular.ttf'
+# font-family: {string}                         |  Path to the 'ttf' font file
+# font-family: default                          |  'data/fonts/SourceCodePro-Regular.ttf'
 #
-# text: YAML list of python f-strings     |
-# text: default                           |  ["{artist} - {title}", "Beatmap by {creator}"]
+# text: YAML list of python f-strings           |
+# text: default                                 |  ["{artist} - {title}", "Beatmap by {creator}"]
 #
 # Available f-strings: ('title', 'title_unicode', 'artist', 'artist_unicode',
 #                       'creator', 'source', 'beatmap_id', 'beatmap_set_id')
+#                      I.e.  Some metadata
 #
-#                       I.e.  Some metadata
+#
+# text-outline-thickness: {int}px               |  Thickness radius, recommended to specify it in px
+#
+# text-outline-color: {string}                  |  Name of the color: "black", "white", etc.
+# text-outline-color: {HEX string}              |  Hex string of the color. For example #4287f5, #ffffff, etc.
+# text-outline-color: {0-255},{0-255},{0-255}   |  RGB color
+#
+# bg-blur-radius: {int}px                       |  Gaussian blur specified in px
 #
 ###################
-$schema: ../yaml_schemas/yaml_schema.json # Just specifying a schema, not necessary
 parameters:
   border-thickness: 5%
   border-color: white
   font-size: 60px
-  crop-vertical-size: 15%
+  bg-crop-vertical-size: 15%
   font-color: white
   font-family: default
   text: default
+  text-outline-thickness: 2px
+  text-outline-color: black
+  bg-blur-radius: 10px
 ```
 
 You can specify some parameters there and further pass `your_style.yaml` path to the script using `--style` or `-s` parameter.  
