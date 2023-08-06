@@ -1,2 +1,2 @@
-Add possibility of inputting HEX in color parameters
-Add text-outline-font-family, text-outline-font-color, bg-blur variables
+Add possibility of inputting HEX in color parameters                [done]
+Add text-outline-thickness, text-outline-color, bg-blur variables   [done]

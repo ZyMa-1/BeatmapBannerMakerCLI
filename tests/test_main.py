@@ -31,10 +31,13 @@ class TestApp(unittest.TestCase):
             'border-thickness': SVGen.generate_size_valid_values(),
             'border-color': SVGen.generate_color_valid_values(),
             'font-size': SVGen.generate_size_valid_values(),
-            'crop-vertical-size': SVGen.generate_size_valid_values(),
+            'bg-crop-vertical-size': SVGen.generate_size_valid_values(),
             'font-color': SVGen.generate_color_valid_values(),
             'font-family': SVGen.generate_font_family_valid_values(),
-            'text': SVGen.generate_text_valid_values()
+            'text': SVGen.generate_text_valid_values(),
+            'text-outline-thickness': SVGen.generate_px_valid_values(),
+            'text-outline-color': SVGen.generate_color_valid_values(),
+            'bg-blur-radius': SVGen.generate_px_valid_values()
         }
 
         for args, parameters in generate_args_and_parameters(pre_data):

@@ -1,9 +1,22 @@
 import pathlib
 
+from PIL import ImageColor
+
 from src.PathManager import PathManager
 
 
 class ArgumentParser:
+    @staticmethod
+    def parse_px_value(arg: str) -> int:
+        if arg[-2:] == 'px':
+            val = int(arg[:-2])
+            if val >= 0:
+                return val
+            else:
+                raise ValueError("Bad argument.")
+        else:
+            raise ValueError("Bad argument.")
+
     @staticmethod
     def parse_size_value(arg: str) -> int | float:
         if arg[-1] == '%':
@@ -32,8 +45,22 @@ class ArgumentParser:
             if not all(0 <= int(arg) <= 255 for arg in args):
                 raise ValueError("Bad argument.")
             return tuple(args)
-        else:
+        elif isinstance(arg, str) and arg[0] == '#' and len(arg) == 7:
+            arg = arg[1:]
+            r = int(arg[0:2], 16)
+            g = int(arg[2:4], 16)
+            b = int(arg[4:6], 16)
+            if not all(0 <= int(arg) <= 255 for arg in [r, g, b]):
+                raise ValueError("Bad argument.")
+            return r, g, b
+        elif isinstance(arg, str):
+            try:
+                arg = ImageColor.getrgb(arg)
+            except ValueError:
+                raise ValueError(f"Invalid color name: {arg}")
             return arg
+        else:
+            raise ValueError("Bad argument.")
 
     @staticmethod
     def parse_font_family_value(arg: str) -> pathlib.Path:

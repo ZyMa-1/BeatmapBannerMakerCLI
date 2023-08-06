@@ -1,7 +1,7 @@
 import pathlib
 
 from OsuFileParser import BeatmapFileParser, BeatmapData
-from PIL import Image, ImageDraw, ImageFont, ImageColor
+from PIL import Image, ImageDraw, ImageFont, ImageFilter
 
 from src.TextParser import TextParser
 
@@ -28,11 +28,6 @@ class BeatmapBannerDrawer:
         if isinstance(thickness, float):
             thickness = int(min(image_width, image_height) * thickness)
 
-        if isinstance(color, str):
-            try:
-                color = ImageColor.getrgb(color)
-            except ValueError:
-                raise ValueError(f"Invalid color name: {color}")
         ##############################
 
         for i in range(thickness):
@@ -47,7 +42,7 @@ class BeatmapBannerDrawer:
             except ValueError:  # Check for bad coordinates
                 pass
 
-    def draw_text_centered(self, text, *, font_family, font_size, font_color):
+    def draw_text_centered(self, text, *, font_family, font_size, font_color, outline_color, outline_thickness):
         if font_size == 0:
             return
 
@@ -60,11 +55,6 @@ class BeatmapBannerDrawer:
 
         text = TextParser.parse_text(text, beatmap_data=self.beatmap_data)
 
-        if isinstance(font_color, str):
-            try:
-                font_color = ImageColor.getrgb(font_color)
-            except ValueError:
-                raise ValueError(f"Invalid color name: {font_color}")
         ###########################
 
         font = ImageFont.truetype(str(font_family), font_size)
@@ -78,7 +68,7 @@ class BeatmapBannerDrawer:
         offset_y = center_y - bbox_center_y
         try:
             draw.multiline_text((bbox[0] + offset_x, bbox[1] + offset_y), text, font=font, fill=font_color,
-                                align="center")
+                                align="center", stroke_width=outline_thickness, stroke_fill=outline_color)
         except ValueError:  # Check for bad coordinates
             pass
 
@@ -102,6 +92,9 @@ class BeatmapBannerDrawer:
             self.image = self.image.crop((left, top, right, bottom))
         except ValueError:  # Check for bad coordinates
             pass
+
+    def blur_image(self, *, radius):
+        self.image = self.image.filter(ImageFilter.GaussianBlur(radius))
 
     def save_image(self, output_path):
         self.image.save(output_path)
